@@ -1,6 +1,32 @@
 <script setup lang="ts">
-import { ERoutes} from './router/routes'
+import { onMounted, toRaw } from 'vue';
+import { ERoutes } from './router/routes';
+import DragonBallCharactersService from './services/DragonBall/DragonBallCharactersService';
+
+// Crear una instancia del servicio
+const dragonBallService = new DragonBallCharactersService();
+
+// Usar onMounted
+onMounted(async () => {
+  // Aquí puedes realizar acciones cuando el componente se monte
+  console.log('El componente se ha montado');
+  fetchDragonBallCharacter()
+});
+
+const fetchDragonBallCharacter = async() => {
+    try {
+        await dragonBallService.fetchData();
+        const data = toRaw(dragonBallService.getData().value); /// si no paso a raw me salen proxy Objects. que es esto? ToRa y UnWrapRef
+        console.log('Fetch on App')
+        console.log(data)
+       
+    } catch(error) {
+       alert('FETCH ERROR')
+    }
+}
+
 </script>
+
 
 <template>
 
