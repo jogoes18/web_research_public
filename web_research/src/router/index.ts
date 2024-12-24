@@ -5,6 +5,7 @@ import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-rou
 import LoginView from '../views/LoginView.vue';
 import MainView  from '../views/MainView.vue';
 import UnknownView from '../views/UnknownView.vue';
+import DragonBallView from '../views/DragonBallView.vue';
 
 // Define las rutas
 const routes: Array<RouteRecordRaw> = [
@@ -19,6 +20,12 @@ const routes: Array<RouteRecordRaw> = [
         path:  ERoutes.MAIN_VIEW,
         name:  ERoutesNames.MAIN_VIEW,
         component: MainView,
+       // meta: { needsToken: true} /// Indicamos que esta vista SI requiere token
+    },
+    {
+        path:  ERoutes.DRAGONBALL_VIEW,
+        name:  ERoutesNames.DRAGONBALL_VIEW,
+        component: DragonBallView,
        // meta: { needsToken: true} /// Indicamos que esta vista SI requiere token
     },
     {

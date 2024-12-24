@@ -4,3 +4,10 @@ export enum EDebugBaseUrls {
     DRAGONBALL_CHARACTERS= "https://dragonball-api.com/api/characters",
     CHUCK_JOKES= "https://dragonball-api.com/api/characters",
 }
+
+export enum EDragonBallUrls {
+    BASE ='https://dragonball-api.com/api/',
+    CHARACTERS= BASE+ 'characters/',
+    PLANETS= BASE+ 'planets/',
+    TRANSFORMATIONS= BASE+ 'transformations/',
+}

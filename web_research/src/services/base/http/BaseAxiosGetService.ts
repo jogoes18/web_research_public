@@ -2,11 +2,11 @@ import { Ref, UnwrapRef, ref } from 'vue';
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 
 class BaseAxiosGetService<T> {
-  private axiosInstance: AxiosInstance;
+  protected axiosInstance: AxiosInstance;
   protected token: string | null = null;
   protected data: Ref<UnwrapRef<T> | null> = ref(null) as Ref<UnwrapRef<T> | null>;
   protected mockMode: boolean;
-  private url: string;
+  protected url: string;
   
   // Evento personalizado de autenticación fallida
   private authErrorEmitter: (() => void)[] = [];
