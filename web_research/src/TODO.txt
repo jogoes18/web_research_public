@@ -1,0 +1,13 @@
+- Crear maquetado principal de app
+    - Crear barra superior con título de proyecto
+    - Crear barra inferior
+    - MainContent
+- Crear barra de router links
+- Estructurar vista DragonBall
+    - Otro router:
+        - Planets
+        - Characters
+- Tabla de planetas
+- Tabla de characters
+- Jugar con transiciones de router
+- Mejorar servicios de DragonBall para filtrar más datos
