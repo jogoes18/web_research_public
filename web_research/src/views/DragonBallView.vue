@@ -14,6 +14,7 @@ const planet = ref<IDragonBallPlanet | null>(null); // Planeta seleccionado indi
 // Usar onMounted
 onMounted(async () => {
   console.log('El componente se ha montado');
+  await fetchPlanets(); // Llamamos a fetchPlanets cuando el componente se monta
 });
 
 // Función para obtener el planeta basado en el ID
@@ -58,24 +59,29 @@ const fetchPlanets = async () => {
     <v-btn @click="fetchPlanets" color="primary">Fetch Planets</v-btn>
   </v-card>
 
-  <!-- Mostrar el componente con los datos del planeta -->
-  <v-card class="elevation-12">
+  <!-- Mostrar el componente con los datos del planeta seleccionado -->
+  <v-card class="elevation-12" v-if="planet">
     <DragonBallPlanetCard
-      :id="planet?.id || -1"
-      :name="planet?.name || 'Default Title'"
-      :description="planet?.description || 'Default text content goes here.\nThis is a new line.'"
-      :image="planet?.image || 'Default image'"
+      :id="planet.id"
+      :name="planet.name"
+      :description="planet.description"
+      :image="planet.image"
     />
   </v-card>
 
-  <!-- Mostrar todos los planetas sin v-list-item-content -->
+  <!-- Mostrar todos los planetas -->
   <v-card class="elevation-12">
-    <v-list>
-      <v-list-item v-for="planetItem in planets" :key="planetItem.id">
-        <v-list-item-title>{{ planetItem.name }}</v-list-item-title>
-        <v-list-item-subtitle>{{ planetItem.description }}</v-list-item-subtitle>
-      </v-list-item>
-    </v-list>
+    <v-row>
+      <v-col v-for="planetItem in planets" :key="planetItem.id" cols="12" md="4">
+        <DragonBallPlanetCard
+          :id="planetItem.id"
+          :name="planetItem.name"
+          :description="planetItem.description"
+          :image="planetItem.image"
+        />
+      </v-col>
+    </v-row>
+    <!-- Mensaje si no hay planetas -->
     <v-list-item v-if="planets.length === 0">
       <h1>No planets found.</h1>
     </v-list-item>
