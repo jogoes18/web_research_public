@@ -11,7 +11,7 @@ class DragonBallCharactersService extends BaseAxiosGetService<IDragonBallCharact
     super(EDebugBaseUrls.DRAGONBALL_CHARACTERS + '/1');
   }
 
-  async fetchPlanet(planet_id: string): Promise<IDragonBallPlanet | null> {
+  async fetchPlanet(planet_id: number): Promise<IDragonBallPlanet | null> {
     try {
       const response: AxiosResponse<IDragonBallPlanet> = await this.axiosInstance.get(
         `${EDragonBallUrls.PLANETS}${planet_id}`
