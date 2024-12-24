@@ -48,7 +48,7 @@ const fetchPlanet = async () => {
       v-model="selectedPlanetId"
       :items="[1, 2, 3, 4, 5]"
       label="Select Planet ID"
-      @change="fetchPlanet" 
+      @update:modelValue="fetchPlanet"
     />
   </v-card>
 
